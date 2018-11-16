@@ -7,9 +7,7 @@ package com.us.improve.unirest;
 public class HttpUtilTest {
 
     public static void main(String[] args) {
-        HttpUtil<Object> httpUtil = new HttpUtil();
-        Class c = GenericSuperclassUtil.getActualTypeArgument(httpUtil);
-        System.out.println(c);
+
     }
 
 }
