@@ -19,4 +19,8 @@ public class Competition {
         private User user;
     }
 
+    public void test() {
+
+    }
+
 }
