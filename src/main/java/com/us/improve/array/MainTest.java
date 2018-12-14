@@ -7,7 +7,6 @@ import java.util.Arrays;
  */
 public class MainTest {
 
-
     public static void main(String[] args) {
         int[] ints = new int[] {5, 10, 1, 9};
         String[] strings = new String[] {"abc", "edf"};
