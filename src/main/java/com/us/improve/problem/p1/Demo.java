@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Demo {
 
     // list大小
-    private static final int LIST_LENGTH = 1000000;
+    private static final int LIST_LENGTH = 30000000;
 
     // 线程数量
     private static final int THREAD_COUNT = 100;
@@ -144,8 +144,10 @@ public class Demo {
         // 第四种方法，fork/join，获取本机CPU核心数 * 2，设置为线程数量，用来计数的变量是数组
         System.out.println("第四种方法，fork/join，获取本机CPU核心数 * 2，设置为线程数量，用数组计数，最后遍历数组汇总结果");
         int serverProcessorCount = Runtime.getRuntime().availableProcessors();
+        int newSliceLength = LIST_LENGTH / serverProcessorCount;
 
         int[] result2 = new int[THREAD_COUNT];
+        AtomicInteger count4 = new AtomicInteger(0);
         ExecutorService pool3 = Executors.newFixedThreadPool(serverProcessorCount);
 
         watch.reset();
@@ -156,9 +158,9 @@ public class Demo {
             pool3.execute(new Runnable() {
                 @Override
                 public void run() {
-                    for (int i = THREAD_NO * SLICE_LENGTH; i < (THREAD_NO + 1) * SLICE_LENGTH; i++) {
+                    for (int i = THREAD_NO * newSliceLength; i < (THREAD_NO + 1) * newSliceLength; i++) {
                         if (list.get(i).getType() == 2) {
-                            result2[THREAD_NO]++;
+                            count4.addAndGet(1);
                         }
                     }
                 }
@@ -170,11 +172,7 @@ public class Demo {
 
         watch.stop();
         System.out.println("线程数量: " + serverProcessorCount + ", 花费时间: " + watch.elapsed(TimeUnit.MILLISECONDS) + "ms");
-        int count4 = 0;
-        for (int i = 0; i < result.length; i++) {
-            count4 += result[i];
-        }
-        System.out.println("结果数量: " + count4);
+        System.out.println("结果数量: " + count4.get());
 
         System.out.println();
 
@@ -192,7 +190,7 @@ public class Demo {
 
         watch.stop();
 
-        System.out.println("线程数: " + 4 + ", 花费时间: " + watch.elapsed(TimeUnit.MILLISECONDS) + "ms");
+        System.out.println("线程数: " + 8 + ", 花费时间: " + watch.elapsed(TimeUnit.MILLISECONDS) + "ms");
         System.out.println("结果数量: " + count5);
     }
 
