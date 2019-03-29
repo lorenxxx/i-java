@@ -1,5 +1,8 @@
 package com.us.improve.datastructure.array;
 
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathFactory;
+
 /**
  * @ClassName Demo
  * @Desciption TODO
@@ -18,6 +21,8 @@ public class Demo {
         System.out.println(a1);
         System.out.println(a2);
         System.out.println(a3);
+
+        XPath xPath = XPathFactory.newInstance().newXPath();
     }
 
 }

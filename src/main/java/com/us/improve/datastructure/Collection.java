@@ -7,7 +7,7 @@ package com.us.improve.datastructure;
  * @Date 2019/3/27 5:05 PM
  * @Version 1.0
  **/
-public interface ICollection<E> {
+public interface Collection<E> {
 
     int size();
 
