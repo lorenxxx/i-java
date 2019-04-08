@@ -86,5 +86,5 @@ public class SingleLinkedList<E> implements Collection<E> {
         }
 
     }
-    
+
 }
