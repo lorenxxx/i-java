@@ -33,7 +33,11 @@ public class SingleLinkedList<E> implements Collection<E> {
     }
 
     public void removeFirst() {
+        if (head == null) {
+            // do nothing
+        } else {
 
+        }
     }
 
     @Override
