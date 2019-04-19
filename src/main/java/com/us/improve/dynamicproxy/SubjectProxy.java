@@ -25,9 +25,9 @@ public class SubjectProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("do something before");
+        System.out.println("before...");
         Object result = method.invoke(target, args);
-        System.out.println("do somthind after");
+        System.out.println("after...");
         return result;
     }
 
