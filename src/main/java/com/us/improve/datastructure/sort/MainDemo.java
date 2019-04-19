@@ -14,7 +14,8 @@ public class MainDemo {
 
         //BubbleSort sorter = new BubbleSort();
         //InsertionSort sorter = new InsertionSort();
-        SelectionSort sorter = new SelectionSort();
+        //SelectionSort sorter = new SelectionSort();
+        ShellSort sorter = new ShellSort();
         sorter.sort(array);
         sorter.display(array);
     }
