@@ -2,7 +2,6 @@ package com.us.improve.lombok;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 /**
  * @ClassName User
@@ -13,7 +12,6 @@ import lombok.RequiredArgsConstructor;
  **/
 @Data
 @Builder
-@RequiredArgsConstructor
 public class User {
 
     private Integer id;
