@@ -14,13 +14,30 @@ public class SortSupportDemo {
 
         Sort sort = new SortSupport();
 
-        int[] target1 = new int[source.length];
-        System.arraycopy(source, 0, target1, 0, source.length);
+        int[] target1 = copyArray(source);
         sort.insertSort(target1);
         display(target1);
+
+        int[] target2 = copyArray(source);
+        sort.shellSort(target2);
+        display(target2);
     }
 
-    public static void display(int[] arr) {
+    private static int[] copyArray(int[] arr) {
+        if (arr == null) {
+            return null;
+        }
+
+        if (arr.length == 0) {
+            return new int[0];
+        }
+
+        int[] result = new int[arr.length];
+        System.arraycopy(arr, 0, result, 0, arr.length);
+        return result;
+    }
+
+    private static void display(int[] arr) {
         for (int i : arr) {
             System.out.print(i + " ");
         }

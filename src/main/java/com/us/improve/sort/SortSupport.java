@@ -34,7 +34,25 @@ public class SortSupport implements Sort {
 
     @Override
     public void shellSort(int[] arr) {
+        checkEmpty(arr);
 
+        int length = arr.length;
+        int gap = length;
+        while (gap != 0) {
+            gap = gap / 2;
+            for (int t = 0; t < gap; t++) {
+                for (int i = t + gap; i < length; i = i + gap) {
+                    int insertValue = arr[i];
+                    int j = i - gap;
+
+                    while (j >= 0 && arr[j] > insertValue) {
+                        arr[j + gap] = arr[j];
+                        j -= gap;
+                    }
+                    arr[j + gap] = insertValue;
+                }
+            }
+        }
     }
 
     @Override
