@@ -21,6 +21,10 @@ public class SortSupportDemo {
         int[] target2 = copyArray(source);
         sort.shellSort(target2);
         display(target2);
+
+        int[] target3 = copyArray(source);
+        sort.selectSort(target3);
+        display(target3);
     }
 
     private static int[] copyArray(int[] arr) {

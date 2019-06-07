@@ -12,62 +12,62 @@ public interface Sort {
     /**
      * 插入排序
      *
-     * @param arr 待排序数组
+     * @param array 待排序数组
      */
-    void insertSort(int[] arr);
+    void insertSort(int[] array);
 
     /**
      * 希尔排序
      *
-     * @param arr 待排序数组
+     * @param array 待排序数组
      */
-    void shellSort(int[] arr);
+    void shellSort(int[] array);
 
     /**
      * 选择排序
      *
-     * @param arr 待排序数组
+     * @param array 待排序数组
      */
-    void selectSort(int[] arr);
+    void selectSort(int[] array);
 
     /**
      * 堆排序
      *
-     * @param arr 待排序数组
+     * @param array 待排序数组
      */
-    void heapSort(int[] arr);
+    void heapSort(int[] array);
 
     /**
      * 冒泡排序
      *
-     * @param arr 待排序数组
+     * @param array 待排序数组
      */
-    void bubbleSort(int[] arr);
+    void bubbleSort(int[] array);
 
     /**
      * 快速排序
      *
-     * @param arr 待排序数组
+     * @param array 待排序数组
      */
-    void quickSort(int[] arr);
+    void quickSort(int[] array);
 
     /**
      * 归并排序
      *
-     * @param arr 待排序数组
+     * @param array 待排序数组
      */
-    void mergeSort(int[] arr);
+    void mergeSort(int[] array);
 
     /**
      * 基数排序
      *
-     * @param arr 待排序数组
+     * @param array 待排序数组
      */
-    void radixSort(int[] arr);
+    void radixSort(int[] array);
 
-    default void checkEmpty(int[] arr) {
-        if (arr == null || arr.length == 0) {
-            throw new IllegalArgumentException("arr is empty.");
+    default void checkEmpty(int[] array) {
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("array is empty.");
         }
     }
 
