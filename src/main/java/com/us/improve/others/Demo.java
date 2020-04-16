@@ -13,6 +13,8 @@ public class Demo {
         new Person();
         new Person();
         new Person();
+
+        System.out.println(9/101);
     }
 
 }
