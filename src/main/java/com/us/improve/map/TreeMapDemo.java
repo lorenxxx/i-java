@@ -1,8 +1,6 @@
 package com.us.improve.map;
 
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -15,27 +13,18 @@ import java.util.TreeMap;
 public class TreeMapDemo {
 
     public static void main(String[] args) {
+        TreeMap<Integer, String> treeMap = new TreeMap<>(Comparator.reverseOrder());
 
-        Map<String, String> map = new TreeMap<>(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return 0;
-            }
-        });
+        treeMap.put(4, "Jack");
+        treeMap.put(2, "Loren");
+        treeMap.put(1, "Lily");
+        treeMap.put(3, "Tom");
+        treeMap.put(5, "Pale");
 
-        map.put("c", "cc");
-        map.put("b", "bb");
-        map.put("a", "aa");
+        System.out.println(treeMap.keySet());
 
-        display(map);
-    }
-
-    public static void display(Map map) {
-        Iterator<Map.Entry> iterator = map.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<String, String> entry = iterator.next();
-            System.out.println(entry.getKey() + " -> " + entry.getValue());
-        }
+        System.out.println(treeMap.firstKey());
+        System.out.println(treeMap.lastKey());
     }
 
 }

@@ -9,19 +9,21 @@ package com.us.improve.concurrent.threadlocal;
  **/
 public class MainTest {
 
-    public static ThreadLocal<String> threadLocal = new ThreadLocal<>();
+    public static ThreadLocal<String> threadLocal = new ThreadLocal();
 
     public static void main(String[] args) {
         threadLocal.set("hello");
         System.out.println(Thread.currentThread() + ": " + threadLocal.get());
 
-        new Thread(new Runnable() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 threadLocal.set("world");
                 System.out.println(Thread.currentThread() + ": " + threadLocal.get());
             }
-        }).start();
+        });
+        thread.start();
+
     }
 
 }

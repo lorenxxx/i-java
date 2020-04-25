@@ -24,5 +24,4 @@ public class Demo {
         System.out.println(list.peekTail().getData());
     }
 
-
 }
