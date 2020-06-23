@@ -76,6 +76,13 @@
             <version>4.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- JMH Java Microbenchmark Harness，JAVA 微基准测试套件 -->
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
