@@ -41,8 +41,6 @@ public class DemoServer implements Runnable {
                 BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
                 DataInputStream dis = new DataInputStream(bis);
 
-                DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-
                 byte[] inBytes = new byte[12];
                 while (dis.read(inBytes) != -1) {
                     if (dis.available() == 0) {
