@@ -17,6 +17,17 @@ public class ConsumerTest {
     public void test1() {
         Consumer<Integer> square = x -> System.out.println(x * x);
         square.accept(2);
+
+        Consumer<Integer> add = new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) {
+
+            }
+        };
+    }
+
+    public void square(int x) {
+        System.out.println(x * x);
     }
 
 }
