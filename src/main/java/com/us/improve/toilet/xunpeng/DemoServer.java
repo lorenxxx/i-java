@@ -5,7 +5,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -43,20 +42,28 @@ public class DemoServer implements Runnable {
 
                 byte[] inBytes = new byte[12];
                 while (dis.read(inBytes) != -1) {
-                    if (dis.available() == 0) {
-                        if (StringUtils.endsWithIgnoreCase("3A", CodeUtil.byteToHexString(inBytes[0]))) {
-                            // 进行应答
-                            ResponseUtil.response(socket, inBytes);
+                    String inHexStr = CodeUtil.byteArr2HexStr(inBytes);
+                    System.out.println("收到数据: " + inHexStr);
 
-                            // 业务处理
-                            // 设备地址(IP + 本机地址)
-                            String sensor = socket.getRemoteSocketAddress() + "-" + ResolveUtil.resolveSensorAddr(inBytes);
-                            String action = ResolveUtil.resolveAction(inBytes);
-                            System.out.println("传感器[" + sensor + "] -> " + action);
-                        } else {
-                            System.out.println("Unknown Data, ignore...");
-                        }
+                    String frameHeader = ResolveUtil.resolveFrameHeader(inHexStr);
+                    System.out.println("数据类型: " + frameHeader);
+
+                    // 只对"3A"类型的帧头做响应
+                    if (StringUtils.endsWithIgnoreCase(HexDataConstants.IN_AND_OUT_DATA_FRAME_HEADER, frameHeader)) {
+                        // 进行应答(200ms内不进行应答会收到16条重复数据)
+                        ResponseUtil.response(socket, inBytes);
+
+                        // 业务处理
+                        String sensorAddr = ResolveUtil.resolveSensorAddr(inHexStr);
+                        String action = ResolveUtil.resolveEvent(inHexStr);
+
+                        System.out.println("传感器本机地址: " + sensorAddr);
+                        System.out.println("传感器事件: " + action);
+                    } else {
+                        System.out.println("Unknown Data, ignore...");
                     }
+
+                    System.out.println();
                 }
             } catch (SocketTimeoutException s) {
                 System.out.println("Socket timed out!");
