@@ -49,7 +49,7 @@ public class DemoServer implements Runnable {
                     System.out.println("数据类型: " + frameHeader);
 
                     // 只对"3A"类型的帧头做响应
-                    if (StringUtils.endsWithIgnoreCase(HexDataConstants.IN_AND_OUT_DATA_FRAME_HEADER, frameHeader)) {
+                    if (StringUtils.equalsIgnoreCase(HexDataConstants.IN_AND_OUT_DATA_FRAME_HEADER, frameHeader)) {
                         // 进行应答(200ms内不进行应答会收到16条重复数据)
                         ResponseUtil.response(socket, inBytes);
 

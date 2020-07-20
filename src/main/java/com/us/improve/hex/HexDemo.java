@@ -13,21 +13,14 @@ public class HexDemo {
         int from = 0x0000;
         int to = 0xffff;
         //System.out.println(Integer.toHexString(from));
-        //System.out.println(Integer.toHexString(to));
+        System.out.println(to);
+        System.out.println(Integer.toHexString(to));
 
-
-        int sensorId = 100;
-        System.out.println(sensorId);
+        int sensorId = 1000;
         System.out.println(Integer.toHexString(sensorId));
 
-        sensorId += 1000;
-        System.out.println(sensorId);
-        System.out.println(Integer.toHexString(sensorId));
-
-
-        int beijingSensorId = 100;
-
-
+        int increaseSensorId = 1001;
+        System.out.println(Integer.toHexString(increaseSensorId));
     }
 
 }
