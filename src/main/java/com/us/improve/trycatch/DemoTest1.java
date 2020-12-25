@@ -10,7 +10,7 @@ package com.us.improve.trycatch;
 public class DemoTest1 {
 
     public static void main(String[] args) {
-        System.out.println(getAge());
+        test1();
     }
 
     public static int getAge() {
@@ -27,6 +27,20 @@ public class DemoTest1 {
         } finally {
             System.out.println("finally lock execute");
             i = 30;
+        }
+    }
+
+    public static void test1() {
+        try {
+            for (int i = 0; i < 10; i++) {
+                if (i == 5) {
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("catch");
+        } finally {
+            System.out.println("finally");
         }
     }
 
