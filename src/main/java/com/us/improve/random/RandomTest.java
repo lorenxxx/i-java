@@ -15,6 +15,8 @@ public class RandomTest
 	{
 		RandomTest test = new RandomTest();
 		test.run();
+
+		Math.random();
 	}
 
 	public void run()
@@ -32,7 +34,7 @@ public class RandomTest
 
 		System.out.println("");
 
-		System.out.println("Random设置种子：");
+		System.out.println("Random设置种子1：");
 		for (int i = 0; i < 5; i++)
 		{
 			Random random = new Random();
@@ -43,6 +45,20 @@ public class RandomTest
 			}
 			System.out.println("");
 		}
+		System.out.println("");
+
+		System.out.println("Random设置种子2：");
+		for (int i = 0; i < 5; i++)
+		{
+			Random random = new Random();
+			random.setSeed(99);
+			for (int j = 0; j < 10; j++)
+			{
+				System.out.print(" " + random.nextInt(100) + ", ");
+			}
+			System.out.println("");
+		}
+
 	}
 
 }

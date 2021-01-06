@@ -33,8 +33,7 @@ public class MainTest {
 
         IntSummaryStatistics stats = numbers.stream().mapToInt((x) -> x).summaryStatistics();
         System.out.println(stats.getMax());
-        System.out.print(stats.getAverage());
-
+        System.out.println(stats.getAverage());
     }
 
 }
