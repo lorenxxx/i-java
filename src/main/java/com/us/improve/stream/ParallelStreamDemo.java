@@ -3,15 +3,12 @@ package com.us.improve.stream;/**
  * @date 1/6/21 7:31 PM
  */
 
-import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Author loren
@@ -22,38 +19,30 @@ import java.util.concurrent.TimeUnit;
 public class ParallelStreamDemo
 {
 
-	public static void main(String[] args)
-	{
-		List<Item> itemList = new ArrayList<>();
-		for (int i = 1; i <= 100; i++)
+//	public static void main(String[] args)
+//	{
+//		List<Integer> list = new ArrayList<>();
+//		IntStream.range(0, 50).parallel().map(e -> e * 2).forEach(list::add);
+//		System.out.println("size = " + list.size() + "\n" + list);
+//	}
+
+		public static void main(String[] args)
 		{
-			itemList.add(new Item(i, "item-" + i));
-		}
-
-		List<Item> itemListCopy = Lists.newArrayList();
-		itemList.parallelStream().forEach(item -> {
-			try
+			List<Integer> itemList = new ArrayList<>();
+			for (int i = 1; i <= 100; i++)
 			{
-				if (new Random().nextInt(10) % 2 == 0)
-				{
-					TimeUnit.MILLISECONDS.sleep(new Random().nextInt(1000));
-				}
-			} catch (InterruptedException e)
-			{
-				e.printStackTrace();
+				itemList.add(i * 2);
 			}
-			itemListCopy.add(item);
-		});
 
-		Integer size = itemListCopy.size();
-		System.out.println("size: " + size);
-		System.out.println("elements: " + itemListCopy);
+			List<Integer> itemListCopy = new ArrayList<>();
+			itemList.parallelStream().forEach(item -> {
+				itemListCopy.add(item);
+			});
 
-		//        Map<Integer, User> map = new HashMap<>();
-		//
-		//        map = users.stream().collect(Collectors.toMap(User::getId, item -> item));
-		//        System.out.println(map);
-	}
+			Integer size = itemListCopy.size();
+			System.out.println("size: " + size);
+			System.out.println("elements: " + itemListCopy);
+		}
 
 	@NoArgsConstructor
 	@AllArgsConstructor
