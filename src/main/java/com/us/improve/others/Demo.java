@@ -10,11 +10,11 @@ package com.us.improve.others;
 public class Demo {
 
     public static void main(String[] args) {
-        int a = 0;
-        int b = 1;
-        a = b = 2;
-        System.out.println(a);
-        System.out.println(b);
+        int a = 10;
+        int b = 6;
+
+        System.out.println(a / b);
+
     }
 
 }
