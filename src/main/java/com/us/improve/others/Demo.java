@@ -10,11 +10,9 @@ package com.us.improve.others;
 public class Demo {
 
     public static void main(String[] args) {
-        int a = 10;
-        int b = 6;
-
-        System.out.println(a / b);
-
+        while (true) {
+            System.out.println("ok");
+        }
     }
 
 }

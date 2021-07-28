@@ -12,6 +12,11 @@ import java.util.Random;
  **/
 public class Demo1 {
 
+	/**
+	 * notify方法只唤醒一个等待（对象的）线程并使该线程开始执行。所以如果有多个线程等待一个对象，这个方法只会唤醒其中一个线程，选择哪个线程取决于操作系统对多线程管理的实现。
+	 * notifyAll 会唤醒所有等待(对象的)线程，尽管哪一个线程将会第一个处理取决于操作系统的实现。如果当前情况下有多个线程需要被唤醒，推荐使用notifyAll 方法
+	 */
+
 	private static final Queue<Integer> queue = new LinkedList<>();
 
 	private static final Integer maxSize = 5;
@@ -60,12 +65,6 @@ public class Demo1 {
 					System.out.println("Producer[" + name + "] producing value: " + value);
 
 					queue.notifyAll();
-
-					try {
-						queue.wait();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
 				}
 			}
 		}
@@ -101,12 +100,6 @@ public class Demo1 {
 					System.out.println("Consumer[" + name + "] consuming value: " + value);
 
 					queue.notifyAll();
-
-					try {
-						queue.wait();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
 				}
 			}
 		}

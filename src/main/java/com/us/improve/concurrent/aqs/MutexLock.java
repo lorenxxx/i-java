@@ -46,7 +46,7 @@ public class MutexLock {
             if (super.getState() == 0) {
                 throw new IllegalMonitorStateException();
             }
-            super.setExclusiveOwnerThread(Thread.currentThread());
+            super.setExclusiveOwnerThread(null);
             super.setState(0);
             return true;
         }
