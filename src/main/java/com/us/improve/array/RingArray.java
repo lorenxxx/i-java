@@ -1,31 +1,42 @@
 package com.us.improve.array;
 
+import java.util.Arrays;
+
 /**
- * @ClassName RingArray
- * @Desciption TODO
- * @Author Loren
- * @Date 2018/12/14 16:04
+ * @Author loren
+ * @Description 环形数组
+ * @Date 2023-09-18 23:46
  * @Version 1.0
  **/
-public class RingArray {
+public class RingArray<T> {
 
-    private int[] elementData;
+	private Object[] elementData;
 
-    private int length;
+	private int length;
 
-    public RingArray(int length) {
-        this.length = length;
-        this.elementData = new int[length];
-    }
+	public RingArray(int length) {
+		this.length = length;
+		this.elementData = new Object[length];
+	}
 
-    public int get(int index) {
-        index = index % length;
-        return elementData[index];
-    }
+	public T get(int index) {
+		return (T) elementData[index / this.length];
+	}
 
-    public void set(int index, int value) {
-        index = index % length;
-        elementData[index] = value;
-    }
+	public void set(int index, T value) {
+		this.elementData[index % this.length] = value;
+	}
+
+	public void display() {
+		System.out.println(Arrays.toString(this.elementData));
+	}
+
+	public static void main(String[] args) {
+		RingArray<Integer> ringArray = new RingArray<>(10);
+		ringArray.set(0, 100);
+		ringArray.display();
+
+		System.out.println(ringArray.get(0));
+	}
 
 }
